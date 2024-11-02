@@ -72,7 +72,7 @@ void expdeM(struct tracker track_person[], int n)
             printf("Total Amount Used in Month %d :", num);
             scanf("%d", &track_person[i].money_used[num - 1]);
             track_person[i].saving[num - 1] = (track_person[i].total_money[num - 1]) - (track_person[i].money_used[num - 1]);
-            
+
             printf("Data Stored Successfully !\n");
 
             return;
@@ -189,10 +189,10 @@ void updateM(struct tracker track_person[], int n)
 {
 
     int monthN, UpdatedM;
-    char N[30];
+    char userName[30];
 
     printf("Enter User Name stored in your Expense Book:");
-    scanf(" %[^\n]", &n);
+    scanf(" %[^\n]", &userName);
 
     printf("\nEnter Month Number [ 1-12 ]:");
     scanf("%d", &monthN);
@@ -201,23 +201,22 @@ void updateM(struct tracker track_person[], int n)
     scanf("%d", &UpdatedM);
 
     int userFound = 0;
-    int monthFound = 0;
 
     for (int i = 0; i < n; i++)
     {
 
-        if (strcmp(N, track_person[i].name) == 0)
+        if (strcmp(userName, track_person[i].name) == 0)
+            userFound = 1;
         {
-            if (monthN>=1 && monthN<=12)
+            if (monthN >= 1 && monthN <= 12)
             {
-                monthFound = 1;
 
-                track_person[i].total_money[monthN-1] = UpdatedM;
-                track_person[i].saving[monthN-1] = track_person[i].total_money[monthN-1] - track_person[i].money_used[monthN-1];
+                track_person[i].total_money[monthN - 1] = UpdatedM;
+                track_person[i].saving[monthN - 1] = track_person[i].total_money[monthN - 1] - track_person[i].money_used[monthN - 1];
                 printf("Updated successfully !\n");
                 return;
             }
-            if (monthFound == 0)
+            else
             {
                 printf("Not in Your Record !\n");
             }
@@ -232,10 +231,10 @@ void updateM(struct tracker track_person[], int n)
 void uptotal(struct tracker track_person[], int n)
 {
     int monthN, UpdatedM;
-    char N[30];
+    char userName[30];
 
     printf("Enter Name stored in your Expense Book:");
-    scanf(" %[^\n]", &n);
+    scanf(" %[^\n]", &userName);
 
     printf("\nEnter Month Number:\n");
     scanf("%d", &monthN);
@@ -244,31 +243,31 @@ void uptotal(struct tracker track_person[], int n)
     scanf("%d", &UpdatedM);
 
     int userFound = 0;
-    int monthFound = 0;
+    // int monthFound = 0;
 
     for (int i = 0; i < n; i++)
     {
 
-        if (strcmp(N, track_person[i].name) == 0)
+        if (strcmp(userName, track_person[i].name) == 0)
         {
             userFound = 1;
 
-            if (monthN>=1 && monthN<=12)
+            if (monthN >= 1 && monthN <= 12)
             {
 
-                monthFound = 1;
+                // monthFound = 1;
 
-                track_person[i].money_used[monthN-1] = UpdatedM;
-                track_person[i].saving[monthN-1] = track_person[i].total_money[monthN-1] - track_person[i].money_used[monthN-11];
-                
+                track_person[i].money_used[monthN - 1] = UpdatedM;
+                track_person[i].saving[monthN - 1] = track_person[i].total_money[monthN - 1] - track_person[i].money_used[monthN - 11];
+
                 printf("\nUpdated successfully !\n");
                 return;
             }
-            
-            if (monthFound == 0)
-            {
-                printf("Not in Your Record !\n");
-            }
+
+            // if (monthFound == 0)
+            // {
+            //     printf("Not in Your Record !\n");
+            // }
         }
     }
 
@@ -285,14 +284,16 @@ int totalSaving(struct tracker track_person[], int n)
     printf("Enter User Name :");
     scanf(" %[^\n]", &u);
 
-    int sum = 0;
-    int userFound = 0;
+    // int sum = 0;
+    // int userFound = 0;
 
     for (int j = 0; j < n; j++)
     {
 
         if (strcmp(u, track_person[j].name) == 0)
         {
+
+            int sum = 0;
 
             for (int i = 0; i < 12; i++)
             {
@@ -302,10 +303,12 @@ int totalSaving(struct tracker track_person[], int n)
             return sum;
         }
     }
-    if (userFound == 0)
-    {
         printf("User Name Not Found!\n");
-    }
+        return 0;
+    // if (userFound == 0)
+    // {
+    
+    // }
 }
 void percentageAmountSaved(struct tracker track_person[], int n)
 {
@@ -327,9 +330,8 @@ void percentageAmountSaved(struct tracker track_person[], int n)
             userFound = 1;
             for (int i = 0; i < 12; i++)
             {
-                total =  total + track_person[j].total_money[i];
+                total = total + track_person[j].total_money[i];
                 sumMoney = sumMoney + track_person[j].saving[i];
-                
             }
             break;
         }
