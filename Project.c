@@ -37,7 +37,7 @@ void ExpDe(struct tracker track_person[], int n)
         printf("Enter User Name %d : ", i + 1);
         scanf(" %[^\n]", track_person[i].name);
 
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < 12; j++)
         {
             track_person[i].total_money[j] = 0;
             track_person[i].money_used[j] = 0;
@@ -197,7 +197,7 @@ void updateM(struct tracker track_person[], int n)
     printf("\nEnter Month Number [ 1-12 ]:");
     scanf("%d", &monthN);
 
-    printf("\nEnter New/Updated monthly Money in a month:\n");
+    printf("\nEnter New/Updated Money Used in that month:");
     scanf("%d", &UpdatedM);
 
     int userFound = 0;
@@ -211,7 +211,7 @@ void updateM(struct tracker track_person[], int n)
             if (monthN >= 1 && monthN <= 12)
             {
 
-                track_person[i].total_money[monthN - 1] = UpdatedM;
+                track_person[i].money_used[monthN - 1] = UpdatedM;
                 track_person[i].saving[monthN - 1] = track_person[i].total_money[monthN - 1] - track_person[i].money_used[monthN - 1];
                 printf("Updated successfully !\n");
                 return;
@@ -257,7 +257,7 @@ void uptotal(struct tracker track_person[], int n)
 
                 // monthFound = 1;
 
-                track_person[i].money_used[monthN - 1] = UpdatedM;
+                track_person[i].total_money[monthN - 1] = UpdatedM;
                 track_person[i].saving[monthN - 1] = track_person[i].total_money[monthN - 1] - track_person[i].money_used[monthN - 11];
 
                 printf("\nUpdated successfully !\n");
@@ -344,7 +344,7 @@ void percentageAmountSaved(struct tracker track_person[], int n)
     if (total > 0)
     {
 
-        float percentage = (sumMoney / total) * 100;
+        float percentage = ((float)sumMoney / total) * 100;
 
         printf("Percentage of Amount Saved : %.2f %%\n", percentage);
     }
@@ -400,7 +400,7 @@ void main()
         printf("Enter Your choice:");
         scanf("%d", &ch);
 
-        switch (ch)
+        switch(ch)
         {
         case 1:
             ExpDe(track_person, n);
