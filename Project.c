@@ -288,10 +288,6 @@ int totalSaving(struct tracker track_person[], int n)
     char u[30];
     printf("Enter User Name :");
     scanf(" %[^\n]", &u);
-
-    // int sum = 0;
-    // int userFound = 0;
-
     for (int j = 0; j < n; j++)
     {
 
@@ -310,10 +306,6 @@ int totalSaving(struct tracker track_person[], int n)
     }
         printf("User Name Not Found!\n");
         return 0;
-    // if (userFound == 0)
-    // {
-    
-    // }
 }
 void percentageAmountSaved(struct tracker track_person[], int n)
 {
@@ -362,7 +354,7 @@ void percentageAmountSaved(struct tracker track_person[], int n)
 
 void main()
 {
-    // Write C code here
+    // Main
     printf("\t\t\t------- Welcome To  Expense Book [Free Version] -------\n\n");
     printf("\t\t-------------------------------------------------------------------\n\n");
     printf("\t\t Guidelines:\n\n");
@@ -384,7 +376,6 @@ void main()
     }
     printf("\n");
     int ch;
-    // int option;
 
     do
     {
@@ -405,8 +396,7 @@ void main()
         printf("Enter Your choice:");
         scanf("%d", &ch);
 
-        switch(ch)
-        {
+        switch(ch){
         case 1:
             ExpDe(track_person, n);
             break;
@@ -429,16 +419,17 @@ void main()
             updateM(track_person, n);
             break;
         case 8:
-
             printf("Total Savings are : %d", totalSaving(track_person, n));
             break;
         case 9:
             percentageAmountSaved(track_person, n);
             break;
         case 10:
-            printf("OK");
+            printf("\n");
+            printf("   ----  OK  ----\n---- Have A Good Day ----");
             break;
         }
 
     } while (ch != 10);
+
 }
