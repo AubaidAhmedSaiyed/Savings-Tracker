@@ -1,4 +1,4 @@
-Expense Book  - CLI PROJECT IN  C PROGRAMMING LANGUAGE
+Savings Tracker - CLI PROJECT IN  C PROGRAMMING LANGUAGE
 
 Tracks User Record
 User Can:-
